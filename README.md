@@ -6,6 +6,9 @@ This is an official PyTorch reimplementation of [AnatMix: Self-Supervised Learni
 Our training environments are listed in environment.yml
 This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding Pytorch version.
 
+## Dataset
+to do ,,
+
 ## Run Training
 
 python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrained --cuda 0 --batch_size 64 
@@ -20,4 +23,4 @@ and the performance in validation and test set is written as tfrecords in logdir
 ![sample imgs](doc/imgs/anatmix.png)
 
 ## Results
-<img src="doc/imgs/zhanglab.png" width="30%"> <img src="doc/imgs/chexpert.png" width="30%">
+<img src="doc/imgs/zhanglab.png" width="40%"> <img src="doc/imgs/chexpert.png" width="40%">
