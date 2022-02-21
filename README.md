@@ -20,5 +20,4 @@ and the performance in validation and test set is written as tfrecords in logdir
 ![sample imgs](doc/imgs/anatmix.png)
 
 ## Results
-<img src="doc/imgs/zhanglab.png" width="30%">
-<img src="doc/imgs/chexpert.png" width="30%">
+<img src="doc/imgs/zhanglab.png" width="30%"> <img src="doc/imgs/chexpert.png" width="30%">
