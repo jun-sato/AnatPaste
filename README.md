@@ -20,6 +20,5 @@ and the performance in validation and test set is written as tfrecords in logdir
 ![sample imgs](doc/imgs/anatmix.png)
 
 ## Results
-
-![auc curve_zhanglab](doc/imgs/zhanglab.png)
-![auc curve_chexpert](doc/imgs/chexpert.png)  
+<img src="doc/imgs/zhanglab.png" width="30%">
+<img2 src="doc/imgs/chexpert.png" width="30%">
