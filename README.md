@@ -12,3 +12,9 @@ python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrain
 
 and the performance in validation and test set is written as tfrecords in logdirs.
 
+## flowchart
+![flowchart](doc/imgs/flowchart.png)
+
+## Sample imgs
+
+![sample imgs](doc/imgs/anatmix.png)
