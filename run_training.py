@@ -15,7 +15,7 @@ from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
 
-from dataset import MVTecAT, Repeat, chexpert_dataset
+from dataset import zhanglab_dataset, Repeat, chexpert_dataset
 from cutpaste import AnatMix, CutPasteNormal,CutPasteScar, CutPaste3Way, CutPasteUnion,AnatMix, cut_paste_collate_fn
 from model import ProjectionNet
 from eval import eval_model
@@ -79,10 +79,10 @@ def run_training(data_type="zhanglab",
     train_transform.transforms.append(cutpate_type(transform = after_cutpaste_transform))
     # train_transform.transforms.append(transforms.ToTensor())
     if data_type == 'zhanglab':
-        data_path = '/home/jsato/MAE/zhanglab-chest-xrays/chest_xray'
-        train_data = MVTecAT(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
+        data_path = '/mnt/hdd/zhanglab-chest-xrays/chest_xray'
+        train_data = zhanglab_dataset(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
     elif data_type == 'chexpert':
-        data_path = '/home/jsato/pytorch-cutpaste/chexpert_dataset'
+        data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         train_data = chexpert_dataset(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
 
     
@@ -174,15 +174,15 @@ def run_training(data_type="zhanglab",
                                 mode = 'valid')
                                 #train_embed=batch_embeds)
             print('predict test,,,,,,')
-            test_roc_auc = eval_model(model_name,data_type,device=device,
-                            save_plots = False,
-                            size = size,
-                            show_training_data=False,
-                            model = model,
-                            mode = 'test')
+            #test_roc_auc = eval_model(model_name,data_type,device=device,
+            #                save_plots = False,
+            #                size = size,
+            #                show_training_data=False,
+            #                model = model,
+            #                mode = 'test')
             model.train()
             writer.add_scalar('eval_auc', roc_auc, step)
-            print('score is ',roc_auc,'best score is ',best_roc,'test_roc is ',test_roc_auc)
+            print('score is ',roc_auc,'best score is ',best_roc)
             if roc_auc > best_roc:
                 best_roc = roc_auc
                 print('best score! save model.')
@@ -201,7 +201,7 @@ def run_training(data_type="zhanglab",
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Training defect detection as described in the CutPaste Paper.')
     parser.add_argument('--type', default="zhanglab",
-                        help='MVTec defection dataset type to train seperated by , (default: "all": train all defect types)')
+                        help='which dataset to use. In this repo, you can choose zhanglab, chexpert, and both("all"). ')
 
     parser.add_argument('--epochs', default=256, type=int,
                         help='number of epochs to train the model , (default: 256)')

@@ -3,7 +3,7 @@ from sklearn.manifold import TSNE
 from torchvision import transforms
 from torch.utils.data import DataLoader
 import torch
-from dataset import MVTecAT, chexpert_dataset
+from dataset import zhanglab_dataset, chexpert_dataset
 from cutpaste import CutPaste
 from model import ProjectionNet
 import matplotlib.pyplot as plt
@@ -25,10 +25,10 @@ cached_type = None
 
 def get_train_embeds(model, size, data_type, transform, device):
     if data_type == 'zhanglab':
-        data_path = '/home/jsato/MAE/zhanglab-chest-xrays/chest_xray'
-        test_data = MVTecAT(data_path, data_type, size, transform=transform, mode="train")
+        data_path = '/mnt/hdd/zhanglab-chest-xrays/chest_xray'
+        test_data = zhanglab_dataset(data_path, data_type, size, transform=transform, mode="train")
     elif data_type == 'chexpert':
-        data_path = '/home/jsato/pytorch-cutpaste/chexpert_dataset'
+        data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         test_data = chexpert_dataset(data_path, data_type, size, transform=transform, mode="train")
     # train data / train kde
     
@@ -57,13 +57,12 @@ def eval_model(modelname, data_type, device="cpu", save_plots=False, size=256, s
     test_transform.transforms.append(transforms.ToTensor())
     test_transform.transforms.append(transforms.Normalize(mean=[0.5],
                                                         std=[0.5]))
-    #test_data_eval = MVTecAT(data_path, data_type, size, transform = test_transform, mode=mode)
 
     if data_type == 'zhanglab':
-        data_path = '/home/jsato/MAE/zhanglab-chest-xrays/chest_xray'
-        test_data_eval = MVTecAT(data_path, data_type, size, transform = test_transform, mode=mode)
+        data_path = '/mnt/hdd/zhanglab-chest-xrays/chest_xray'
+        test_data_eval = zhanglab_dataset(data_path, data_type, size, transform = test_transform, mode=mode)
     elif data_type == 'chexpert':
-        data_path = '/home/jsato/pytorch-cutpaste/chexpert_dataset'
+        data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         test_data_eval = chexpert_dataset(data_path, data_type, size, transform = test_transform, mode=mode)
 
     dataloader_test = DataLoader(test_data_eval, batch_size=64,
@@ -127,7 +126,7 @@ def eval_model(modelname, data_type, device="cpu", save_plots=False, size=256, s
             train_transform.transforms.append(CutPaste(transform=after_cutpaste_transform))
             # train_transform.transforms.append(transforms.ToTensor())
 
-            train_data = MVTecAT("Data", data_type, transform=train_transform, size=size)
+            train_data = zhanglab_dataset("Data", data_type, transform=train_transform, size=size)
             dataloader_train = DataLoader(train_data, batch_size=32,
                         shuffle=True, num_workers=8, collate_fn=cut_paste_collate_fn,
                         persistent_workers=True)
@@ -210,7 +209,7 @@ def plot_tsne(labels, embeds, filename):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='eval models')
     parser.add_argument('--type', default="Atelectasis",
-                        help='MVTec defection dataset type to train seperated by , (default: "all": train all defect types)')
+                        help='which dataset to use. In this repo, you can choose zhanglab, chexpert, and both("all"). ')
 
     parser.add_argument('--model_dir', default="models",
                     help=' directory contating models to evaluate (default: models)')

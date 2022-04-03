@@ -1,13 +1,29 @@
 # Implementation of AnatMix
 
-This is an official PyTorch reimplementation of [AnatMix: Self-Supervised Learning for Anomaly Detection and Localization](https://arxiv.org/abs/2104.0401) and in no way affiliated with the original authors. This repository largly rely on [this repository](https://github.com/Runinho/pytorch-cutpaste)
+This is an official PyTorch reimplementation of [AnatMix: Self-Supervised Learning for Anomaly Detection and Localization](https://arxiv.org/abs/2104.0401) and in no way affiliated with the original authors. This repository is mainly based on [this repository](https://github.com/Runinho/pytorch-cutpaste)
 
 ## Setup
 Our training environments are listed in environment.yml
 This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding Pytorch version.
 
 ## Dataset
-to do ,,
+After downloading certain dataset and splitting into train,validation and test, you should make the directories as follows,
+
+dataset_name
+ |
+ |-----train
+ |       |---normal
+ |
+ |-----valid
+ |       |---normal
+ |       |---abnormal
+ |
+ |-----test
+ |       |---normal
+ |       |---abnormal
+
+You must specify the name of normal directory in datasetl.py.The name of abnormal directory is anything you like.
+In this github directory, we use Zhanglab dataset and Chexpert dataset, so their normal directory name are good and No Finding, respectively.
 
 ## Run Training
 

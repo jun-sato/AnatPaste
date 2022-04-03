@@ -17,6 +17,25 @@ from skimage.segmentation import clear_border
 from skimage.measure import label, regionprops
 from skimage.morphology import square,closing,opening,dilation,erosion
 
+class CutPaste(object):
+    """Base class for both cutpaste variants with common operations"""
+    def __init__(self, colorJitter=0.1, transform=None):
+        self.transform = transform
+        
+        if colorJitter is None:
+            self.colorJitter = None
+        else:
+            self.colorJitter = transforms.ColorJitter(brightness = colorJitter,
+                                                      contrast = colorJitter,
+                                                      saturation = colorJitter,
+                                                      hue = colorJitter)
+    def __call__(self, org_img, img):
+        # apply transforms to both images
+        if self.transform:
+            img = self.transform(img)
+            org_img = self.transform(org_img)
+        return org_img, img
+
 
 def LungSegment(img,area_threshold=400):
 
