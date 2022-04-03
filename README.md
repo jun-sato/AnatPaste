@@ -11,14 +11,14 @@ After downloading certain dataset and splitting into train,validation and test, 
 
 dataset_name  
  |-----train  
- &emsp&emsp&emsp|---normal  
+ |          <span>　</span>|---normal  
  |  
  |-----valid  
- &emsp&emsp&emsp|---normal  
- &emsp&emsp&emsp|---abnormal  
+ |          <span>　</span>|---normal  
+ |          <span>　</span>|---abnormal  
  |-----test  
- &emsp&emsp&emsp|---normal  
- &emsp&emsp&emsp|---abnormal  
+ |          <span>　</span>|---normal  
+ |          <span>　</span>|---abnormal  
 
 You must specify the name of normal directory in datasetl.py.The name of abnormal directory is anything you like.
 In this github directory, we use Zhanglab dataset and Chexpert dataset, so their normal directory name  good and No Finding, respectively.
