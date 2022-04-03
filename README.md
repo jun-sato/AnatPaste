@@ -9,7 +9,7 @@ This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding P
 ## Dataset
 After downloading certain dataset and splitting into train,validation and test, you should make the directories as follows,
 
-dataset
+dataset  
  <span>　</span>|-----train  
  <span>　</span>|          <span>　</span>|---normal  
  <span>　</span>|  
