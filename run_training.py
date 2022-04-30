@@ -15,7 +15,7 @@ from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
 
-from dataset import zhanglab_dataset, Repeat, chexpert_dataset
+from dataset import zhanglab_dataset, Repeat, chexpert_dataset, rsna_dataset
 from cutpaste import AnatMix, CutPasteNormal,CutPasteScar, CutPaste3Way, CutPasteUnion,AnatMix, cut_paste_collate_fn
 from model import ProjectionNet
 from eval import eval_model
@@ -84,6 +84,9 @@ def run_training(data_type="zhanglab",
     elif data_type == 'chexpert':
         data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         train_data = chexpert_dataset(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
+    elif data_type == 'rsna':
+        data_path = '/mnt/hdd/RSNA/rsnadataset2'
+        train_data = rsna_dataset(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
 
     
     dataloader = DataLoader(Repeat(train_data, 3000), batch_size=batch_size, drop_last=True,
@@ -200,9 +203,8 @@ def run_training(data_type="zhanglab",
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Training defect detection as described in the CutPaste Paper.')
-    parser.add_argument('--type', default="zhanglab",
-                        help='which dataset to use. In this repo, you can choose zhanglab, chexpert, and both("all"). ')
-
+    parser.add_argument('--type', default="chexpert",
+                        help='which dataset to use. In this repo, you can choose zhanglab, chexpert, rsna, and both("all"). ')
     parser.add_argument('--epochs', default=256, type=int,
                         help='number of epochs to train the model , (default: 256)')
     
@@ -242,7 +244,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     print(args)
-    all_types = ['zhanglab','chexpert']
+    all_types = ['zhanglab','chexpert','rsna']
 
     if args.type == "all":
         types = all_types

@@ -1,10 +1,10 @@
-# Implementation of AnatMix
+# Implementation of AnatPaste
 
 This is an official PyTorch reimplementation of [AnatMix: Anatomy-aware Self-Supervised Learning for Anomaly Detection in chest radiograph](https://arxiv.org/abs/2104.401) and in no way affiliated with the original authors. This repository is mainly based on [this repository](https://github.com/Runinho/pytorch-cutpaste)
 
 ## Setup
 Our training environments are listed in environment.yml
-This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding Pytorch version.
+This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding Pytorch version.  
 `conda env create -f=env_name.yml`
 
 ## Dataset
@@ -22,7 +22,7 @@ dataset
  <span>　</span>|          <span>　</span>|---abnormal  
 
 You must specify the name of normal directory in dataset.py and run_training.py and eval.py.The name of abnormal directory is anything you like.
-In this github directory, we use Zhanglab dataset and Chexpert dataset, so their normal directory name  good and No Finding, respectively.
+In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their normal directory name  good and No Finding, respectively.
 
 ## Run Training
 
@@ -38,4 +38,4 @@ and the performance in validation and test set is written as tfrecords in logdir
 ![sample imgs](doc/imgs/anatmix.png)
 
 ## Results
-<img src="doc/imgs/zhanglab.png" width="40%"> <img src="doc/imgs/chexpert.png" width="40%">
+<img src="doc/imgs/zhanglab.png" width="40%"> <img src="doc/imgs/chexpert.png" width="40%"><img src="doc/imgs/rsna.png" width="40%">
