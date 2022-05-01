@@ -60,14 +60,14 @@ def LungSegment(img,area_threshold=400):
     return label_image>0
 
 
-class AnatMix(CutPaste):
+class AnatPaste(CutPaste):
     """Randomly copy one patche from the image and paste it somewere else.
     Args:
         area_ratio (list): list with 2 floats for maximum and minimum area to cut out
         aspect_ratio (float): minimum area ration. Ration is sampled between aspect_ratio and 1/aspect_ratio.
     """
     def __init__(self, area_ratio=[0.02,0.15], aspect_ratio=0.3,blur_ratio=[0,15],mask_ratio=[150,255],margin=10, **kwags):
-        super(AnatMix, self).__init__(**kwags)
+        super(AnatPaste, self).__init__(**kwags)
         self.area_ratio = area_ratio
         self.aspect_ratio = aspect_ratio
         self.blur_ratio = blur_ratio

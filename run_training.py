@@ -16,7 +16,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
 
 from dataset import zhanglab_dataset, Repeat, chexpert_dataset, rsna_dataset
-from cutpaste import AnatMix, CutPasteNormal,CutPasteScar, CutPaste3Way, CutPasteUnion,AnatMix, cut_paste_collate_fn
+from cutpaste import AnatPaste, CutPasteNormal,CutPasteScar, CutPaste3Way, CutPasteUnion,AnatPaste, cut_paste_collate_fn
 from model import ProjectionNet
 from eval import eval_model
 from utils import str2bool
@@ -232,7 +232,7 @@ if __name__ == '__main__':
     parser.add_argument('--head_layer', default=1, type=int,
                     help='number of layers in the projection head (default: 1)')
     
-    parser.add_argument('--variant', default="3way", choices=['normal', 'scar', '3way', 'union','anatmix'], help='cutpaste variant to use (dafault: "3way")')
+    parser.add_argument('--variant', default="3way", choices=['normal', 'scar', '3way', 'union','anatpaste'], help='cutpaste variant to use (dafault: "3way")')
     
     parser.add_argument('--cuda', default=0, type=str,
                     help='num of cuda to use')
@@ -253,7 +253,7 @@ if __name__ == '__main__':
 
     os.environ["CUDA_VISIBLE_DEVICES"] =str(args.cuda)
     
-    variant_map = {'normal':CutPasteNormal, 'scar':CutPasteScar, '3way':CutPaste3Way, 'union':CutPasteUnion,'anatmix': AnatMix}
+    variant_map = {'normal':CutPasteNormal, 'scar':CutPasteScar, '3way':CutPaste3Way, 'union':CutPasteUnion,'anatpaste': AnatPaste}
     variant = variant_map[args.variant]
     
     device = "cuda" 
