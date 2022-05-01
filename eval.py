@@ -3,7 +3,7 @@ from sklearn.manifold import TSNE
 from torchvision import transforms
 from torch.utils.data import DataLoader
 import torch
-from dataset import zhanglab_dataset, chexpert_dataset
+from dataset import zhanglab_dataset, chexpert_dataset, rsna_dataset
 from cutpaste import CutPaste
 from model import ProjectionNet
 import matplotlib.pyplot as plt
@@ -30,6 +30,9 @@ def get_train_embeds(model, size, data_type, transform, device):
     elif data_type == 'chexpert':
         data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         test_data = chexpert_dataset(data_path, data_type, size, transform=transform, mode="train")
+    elif data_type == 'rsna':
+        data_path = '/mnt/hdd/RSNA/rsnadataset2'
+        test_data = rsna_dataset(data_path, data_type, size, transform=transform, mode="train")
     # train data / train kde
     
 
@@ -64,6 +67,9 @@ def eval_model(modelname, data_type, device="cpu", save_plots=False, size=256, s
     elif data_type == 'chexpert':
         data_path = '/mnt/hdd/CheXpert-v1.0/chexpert_dataset/'
         test_data_eval = chexpert_dataset(data_path, data_type, size, transform = test_transform, mode=mode)
+    elif data_type == 'rsna':
+        data_path = '/mnt/hdd/RSNA/rsnadataset2'
+        test_data_eval = rsna_dataset(data_path, data_type, size, transform = test_transform, mode=mode)    
 
     dataloader_test = DataLoader(test_data_eval, batch_size=64,
                                     shuffle=False, num_workers=0)
@@ -231,7 +237,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     print(args)
-    all_types = ['zhanglab','chexpert']
+    all_types = ['zhanglab','chexpert','rsna']
     
     if args.type == "all":
         types = all_types
