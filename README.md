@@ -26,7 +26,7 @@ In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their 
 
 ## Run Training
 
-python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrained --cuda 0 --batch_size 64 
+`python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrained --cuda 0 --batch_size 64 `  
 
 and the performance in validation and test set is written as tfrecords in logdirs.
 
