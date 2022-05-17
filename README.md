@@ -21,7 +21,7 @@ dataset
  <span>　</span>|          <span>　</span>|---normal  
  <span>　</span>|          <span>　</span>|---abnormal  
 
-You must specify the name of normal directory in dataset.py and run_training.py and eval.py.The name of abnormal directory is anything you like.
+You must specify the name and absolute path of normal directory in dataset.py and run_training.py and eval.py.The name of abnormal directory is anything you like.
 In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their normal directory name  good and No Finding, respectively.
 
 ## Run Training

@@ -106,7 +106,9 @@ def eval_model(modelname, data_type, device="cpu", save_plots=False, size=256, s
     embeds = torch.nn.functional.normalize(embeds, p=2, dim=1)
     train_embed = torch.nn.functional.normalize(train_embed, p=2, dim=1)
 
-    #create eval plot dir
+    ##############################
+    ### We don't use this part.###
+    ##############################
     if save_plots:
         eval_dir = Path("eval") / modelname
         eval_dir.mkdir(parents=True, exist_ok=True)
@@ -165,6 +167,9 @@ def eval_model(modelname, data_type, device="cpu", save_plots=False, size=256, s
         plot_tsne(tsne_labels, tsne_embeds, eval_dir / "tsne.png")
     else:
         eval_dir = Path("unused")
+    ######################################
+
+    
     
     print(f"using density estimation {density.__class__.__name__}")
     density.fit(train_embed)

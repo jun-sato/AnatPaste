@@ -78,6 +78,8 @@ def run_training(data_type="zhanglab",
     train_transform.transforms.append(transforms.Resize((size,size)))
     train_transform.transforms.append(cutpate_type(transform = after_cutpaste_transform))
     # train_transform.transforms.append(transforms.ToTensor())
+
+    ##Please fix this part in your own dataset.
     if data_type == 'zhanglab':
         data_path = '/mnt/hdd/zhanglab-chest-xrays/chest_xray'
         train_data = zhanglab_dataset(data_path, data_type, transform = train_transform, size=int(size * (1/min_scale)))
@@ -175,14 +177,6 @@ def run_training(data_type="zhanglab",
                                 show_training_data=False,
                                 model=model,
                                 mode = 'valid')
-                                #train_embed=batch_embeds)
-            print('predict test,,,,,,')
-            #test_roc_auc = eval_model(model_name,data_type,device=device,
-            #                save_plots = False,
-            #                size = size,
-            #                show_training_data=False,
-            #                model = model,
-            #                mode = 'test')
             model.train()
             writer.add_scalar('eval_auc', roc_auc, step)
             print('score is ',roc_auc,'best score is ',best_roc)
@@ -190,6 +184,8 @@ def run_training(data_type="zhanglab",
                 best_roc = roc_auc
                 print('best score! save model.')
                 torch.save(model.state_dict(), model_dir / f"{model_name}.tch")
+    #load the best model in validation dataset.
+    print('predict test dataset...')
     model.eval()
     model.load_state_dict(torch.load( model_dir / f"{model_name}.tch"))
     test_roc_auc = eval_model(model_name,data_type,device=device,
