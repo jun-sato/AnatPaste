@@ -11,15 +11,15 @@ This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding P
 After downloading certain dataset and splitting into train,validation and test, you should make the directories as follows,
 ```
 dataset  
- <span>　</span>|-----train  
- <span>　</span>|          <span>　</span>|---normal  
- <span>　</span>|  
- <span>　</span>|-----valid  
- <span>　</span>|          <span>　</span>|---normal  
- <span>　</span>|          <span>　</span>|---abnormal  
- <span>　</span>|-----test  
- <span>　</span>|          <span>　</span>|---normal  
- <span>　</span>|          <span>　</span>|---abnormal  
+ |-----train  
+ |        |---normal  
+ |  
+ |-----valid  
+ |        |---normal  
+ |        |---abnormal  
+ |-----test  
+ |        |---normal  
+ |        |---abnormal  
 ```
 You must specify the name and absolute path of normal directory in dataset.py and run_training.py and eval.py.The name of abnormal directory is anything you like.
 In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their normal directory name  good and No Finding, respectively.
