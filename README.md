@@ -35,7 +35,7 @@ and the performance in validation and test set is written as tfrecords in logdir
 
 ## Sample imgs
 
-![sample imgs](doc/imgs/anatmix.png)
+![sample imgs](doc/imgs/anatmix_renew.png)
 
 ## Results
 <img src="doc/imgs/auc_results.png" width="100%">
