@@ -25,9 +25,9 @@ You must specify the name and absolute path of normal directory in dataset.py an
 In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their normal directory name  good and No Finding, respectively.
 
 ## Run Training
-
+```
 `python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrained --cuda 0 --batch_size 64 `  
-
+```
 and the performance in validation and test set is written as tfrecords in logdirs.
 
 ## Flowchart
