@@ -5,7 +5,9 @@ This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Sup
 ## Setup
 Our training environments are listed in environment.yml
 This yml suppose cudatoolkit=11.3 and python=3.9. Please install corresponding Pytorch version.  
-`conda env create -f=env_name.yml`
+```
+conda env create -f=env_name.yml
+```
 
 ## Dataset
 After downloading certain dataset and splitting into train,validation and test, you should make the directories as follows,
