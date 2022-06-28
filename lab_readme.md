@@ -1,8 +1,9 @@
 
-# AnatMix
+# AnatPaste
   
-We proposed a self-supervised learning based anomaly detection model in chest radiographs.
-This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Supervised Learning for Anomaly Detection in chest radiographs](https://arxiv.org/abs/2205.04282v1). This repository is mainly based on [this repository](https://github.com/Runinho/pytorch-cutpaste)
+We proposed a self-supervised learning based anomaly detection model in chest radiographs.  
+This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Supervised Learning for Anomaly Detection in chest radiographs](https://arxiv.org/abs/2205.04282v1).   
+This repository is mainly based on [this repository](https://github.com/Runinho/pytorch-cutpaste)
 
  
 # Features
@@ -14,15 +15,20 @@ This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Sup
  
 We used the following library.
 
-* python=3.9
-* cudatoolkit=11.3
+* pytorch and torchvision
+* sklearn
+* pandas
+* tqdm
+* tensorboard
 
- 
+
 # Installation
 
 Our training environments are listed in environment.yml.  
 please use the following command.
-```
+```bash
+git clone https://github.com/jun-sato/AnatPaste
+cd AnatPaste
 conda env create -f=env_name.yml
 ```
  
@@ -46,18 +52,15 @@ dataset
 
 # Usage
  
-"hoge"の基本的な使い方を説明する。
 
-**丁寧かつ簡潔に、初めて見た人でも理解できる様に**
 
 * データセットの説明。どの位置に置き、どのような形式にしておけば良いか？
 * 主要なファイルの説明。それぞれどのような関数があり、何ができるか？
 * コード実行の手順を記載。どうしたら目的の成果(モデルの学習や成果物の保存など)が得られるか。
  
 ```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
+cd AnatPaste
+python run_training.py --variant anatmix --type zhanglab  --seed 0 --no-pretrained --cuda 0 --batch_size 64 
 ```
 
  
@@ -77,6 +80,6 @@ In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their 
 # License
 ライセンスを明示する。研究室内での使用限定ならその旨を記載。
  
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+AnatPaste is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
   
-"hoge" is Private.
+AnatPaste is Private.
