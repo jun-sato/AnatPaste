@@ -57,43 +57,43 @@ We use three datasets. We can download these datasets as follows;
 
 You can train models using 'run_training.py' with some positional augments.
 ### run_training.py  
---variant 
+--variant   
 which augmentation method do you use. Choose from [''normal', 'scar', '3way', 'union','anatpaste']. All the methods except anatpaste are from cutpaste.  
---type
-which dataset to use.
---epochs
-training epochs.
---model_dir
-output folder of models.
---no-pretrained.
-use pretrained values to initalize ResNet18. 
---test_epochs
-interval to calculate the auc during trainig.
---freeze_resnet
-number of epochs to freeze resnet.
---lr 
-learning rate (defalut: 0.03).
---optim 
-set optimizer. The default is SGD.
---batch_size
-training batch size (default: 32)
---head_layer
-number of layers in the projection head (default: 1)
---cuda
-number of cuda to use.
--seed 
-random seed.
---workers
-number of workers to use for data loading (default: 8)
+--type  
+which dataset to use.  
+--epochs  
+training epochs.  
+--model_dir  
+output folder of models.  
+--no-pretrained.  
+use pretrained values to initalize ResNet18.   
+--test_epochs  
+interval to calculate the auc during trainig.  
+--freeze_resnet  
+number of epochs to freeze resnet.  
+--lr   
+learning rate (defalut: 0.03).  
+--optim   
+set optimizer. The default is SGD.  
+--batch_size  
+training batch size (default: 32)  
+--head_layer  
+number of layers in the projection head (default: 1)  
+--cuda  
+number of cuda to use.  
+-seed   
+random seed.  
+--workers  
+number of workers to use for data loading (default: 8)  
 
-### dataset.py
-Dataset functions for each dataset (Zhanglab, Chexpert, RSNA).
+### dataset.py  
+Dataset functions for each dataset (Zhanglab, Chexpert, RSNA).  
 ### density.py
-Gaussian density estimator functions.
+Gaussian density estimator functions.  
 ### eval.py
-Some functions to evaluate anomaly detection performance.
+Some functions to evaluate anomaly detection performance.  
 ### models.py
-Resnet18 based feature extracting model.
+Resnet18 based feature extracting model.  
 
 
 * データセットの説明。どの位置に置き、どのような形式にしておけば良いか？
