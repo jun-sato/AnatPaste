@@ -48,9 +48,9 @@ dataset name
  |        |---abnormal  
 ```
 We use three datasets. We can download these datasets as follows;
-* [Zhanglab dataset](!https://github.com/coyotespike/zhanglab-chest-xrays)
-* [Chexpert dataset](!https://stanfordmlgroup.github.io/competitions/chexpert/)
-* [RSNA dataset](!https://www.kaggle.com/competitions/rsna-pneumonia-detection-challenge/data)
+* [Zhanglab dataset](https://github.com/coyotespike/zhanglab-chest-xrays)
+* [Chexpert dataset](https://stanfordmlgroup.github.io/competitions/chexpert/)
+* [RSNA dataset](https://www.kaggle.com/competitions/rsna-pneumonia-detection-challenge/data)
 
 
 # Usage
