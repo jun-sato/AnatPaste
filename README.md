@@ -34,11 +34,11 @@ In this github directory, we use Zhanglab, Chexpert, and RSNA dataset, so their 
 and the performance in validation and test set is written as tfrecords in logdirs.
 
 ## Flowchart
-![flowchart](doc/imgs/flowchart.pdf)
+![flowchart](doc/imgs/flowchart.png)
 
 ## Sample imgs
 
-![sample imgs](doc/imgs/anatmix_renew.pdf)
+![sample imgs](doc/imgs/anatmix_renew.png)
 
 ## Results
-<img src="doc/imgs/auc_results.pdf" width="100%">
+<img src="doc/imgs/auc_results.png" width="100%">
