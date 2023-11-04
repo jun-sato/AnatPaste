@@ -1,6 +1,6 @@
 # Implementation of AnatPaste
 
-This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Supervised Learning for Anomaly Detection in chest radiographs](https://arxiv.org/abs/2205.04282v1).  
+This is an official PyTorch implementation of [AnatPaste: Anatomy-aware Self-Supervised Learning for Anomaly Detection in chest radiographs](https://www.cell.com/iscience/fulltext/S2589-0042(23)01163-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS258900422301163X%3Fshowall%3Dtrue).  
 This repository is mainly based on [this repository](https://github.com/Runinho/pytorch-cutpaste)
 
 ## Setup
